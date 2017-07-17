@@ -30,6 +30,8 @@
         android:layout_height="200dp"
         android:layout_below="@id/tv_load"
         android:layout_centerInParent="true"
+        android:visibility="visible"
+        android:clickable="true"
         android:scaleType="centerCrop" />
 
 </RelativeLayout>

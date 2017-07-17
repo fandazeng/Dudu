@@ -12,16 +12,18 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.zeng.fanda.dudu.base.DuduApplication;
 import com.zeng.fanda.dudu.di.component.AppComponent;
 import com.zeng.fanda.dudu.widget.imageloader.ImageLoader;
-import com.zeng.fanda.dudu.widget.imageloader.glide.GlideImageConfig;
+import com.zeng.fanda.mylibrary.core.imageloader.ImageLoader01;
+import com.zeng.fanda.mylibrary.core.imageloader.ImageLoader01plus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 public class MainActivity extends AppCompatActivity {
 
     ImageLoader mImageLoader;
+
+    ImageLoader01plus mImageLoader01plus;
 
     AppComponent mAppComponent;
 
@@ -79,8 +81,12 @@ public class MainActivity extends AppCompatActivity {
 //                .load(url2)
 //                .bitmapTransform(new CropCircleTransformation(this),new GrayscaleTransformation(this))
 //                .into(drawableTarget);
+        if (mImageLoader01plus == null) {
+            mImageLoader01plus = new ImageLoader01plus();
+        }
+        mImageLoader01plus.displayImage(url,iv_image);
 
-        mImageLoader.loadImage(this, GlideImageConfig.builder().url(url).placeholder(R.mipmap.icon_home_placeholder).errorPic(R.mipmap.icon_loading_error).transformation(new CropCircleTransformation(this)).imageView(iv_image).build());
+//        mImageLoader.loadImage(this, GlideImageConfig.builder().url(url).placeholder(R.mipmap.icon_home_placeholder).errorPic(R.mipmap.icon_loading_error).transformation(new CropCircleTransformation(this)).imageView(iv_image).build());
 
     }
 
