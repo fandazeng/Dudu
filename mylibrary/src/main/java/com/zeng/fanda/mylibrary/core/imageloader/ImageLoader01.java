@@ -45,6 +45,11 @@ public class ImageLoader01 {
     }
 
     public void displayImage(final String url, final ImageView imageView) {
+        Bitmap bitmap = mImageCache.get(url);
+        if (bitmap != null) {
+            imageView.setImageBitmap(bitmap);
+            return;
+        }
         imageView.setTag(url);
         mExecutorService.submit(new Runnable() {
             @Override
